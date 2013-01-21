@@ -15,8 +15,7 @@ $(document).ready(function() {
 	})
 	$(".pagina_a").on("click", function(e) {
 
-		debugger;
-
+		
 		e.preventDefault();
 		id = $(this).data("id");
 		$(".pagina").removeClass("active");

@@ -9,22 +9,18 @@ $db = new db();
 
 $U = new usuario($_GET['usuario']);
 
-
-if(!$U->usuario)
+if (!$U -> usuario)
 	die("Usuario invalido. <a href='/'> Volver </a>");
-
-$todos = new partido();
-$todos -> loadAll();
 
 $results = new resultado();
 $results -> loadIf(array('usuario' => $U -> id));
-
 
 $res = array();
 while ($results -> next()) {
 	$res[$results -> partido] = array('local' => $results -> local, 'visitante' => $results -> visitante, 'puntos' => $results -> puntos);
 };
 
+$jornadas = $db -> GetAll("select grupo from partidos group by grupo order by grupo asc");
 ?>
 
 <div class='span12'>
@@ -37,43 +33,68 @@ while ($results -> next()) {
 	
 	<h2> Marcadores de @<?= $U -> usuario ?></h2>
 
-	<?
-	$grupo = '';
+    <div class="pagination pagination-large">
+    <ul>
+    <? foreach($jornadas as $jornada) {
+    	if($jornada["grupo"] == $jornadas[count($jornadas)-2]["grupo"]){
+    		$active = "active";
+			$jornada_actual = $jornada["grupo"];
+    	} else {
+    		$active = "";
+    	}
+    ?>	
+	   <li class='pagina <?= $active ?>'><a class='pagina_a' data-id='<?= $jornada["grupo"] ?>' href="#" ><?= $jornada["grupo"] ?></a></li>
+    <? } ?>
+    </ul>
+    </div>
+    
 
-	while ($todos -> next()) {
 
-		if ($grupo != $todos -> grupo) {
-			$grupo = $todos -> grupo;
-			$todos -> printGrupo("ro");
+    <?
+	foreach ($jornadas as $jornada) {
 
-		}
+		$todos = new partido();
+		$todos -> loadIf(array("grupo" => $jornada["grupo"]));
 
-		$past = strtotime($todos -> fechahora) < time() ? true : false;
+		$actual = $jornada_actual == $jornada["grupo"] ? "actual" : "";
+		echo "<div class='jornada $actual' data-jornada='{$jornada["grupo"]}'>";
+		echo '<h3 class="grupo_header">'.$jornada["grupo"].' </h3>';		
+		while ($todos -> next()) {
 
-		$puntos = isset($res[$todos -> id]["puntos"]) ? $res[$todos -> id]["puntos"] : "notset";
+			if ($grupo != $todos -> grupo) {
+				$grupo = $todos -> grupo;
 
-		$pointsClass = "";
-		if ($puntos == 1)
-			$pointsClass = "badge-warning";
-		if ($puntos == 3)
-			$pointsClass = "badge-success";
+			}
 
-		$badge = $past ? "<span class='badge-puntos badge $pointsClass '> $puntos </span>" : "";
-		$pronostico = $past ?  $res[$todos -> id]['local'] ." - ". $res[$todos -> id]['visitante']  : "";
+			$past = strtotime($todos -> fechahora) < time() ? true : false;
 
-		echo "			<div id='fila_1' class='fila'>
+			$puntos = isset($res[$todos -> id]["puntos"]) ? $res[$todos -> id]["puntos"] : "notset";
+
+			$pointsClass = "";
+			if ($puntos == 1)
+				$pointsClass = "badge-warning";
+			if ($puntos == 3)
+				$pointsClass = "badge-success";
+
+			$badge = $past ? "<span class='badge-puntos badge $pointsClass '> $puntos </span>" : "";
+			$pronostico = $past ? $res[$todos -> id]['local'] . " - " . $res[$todos -> id]['visitante'] : "";
+
+			echo "			<div id='fila_1' class='fila'>
 			<span class='date'> {$todos->fecha} </span>
 			<span class='time'> {$todos->hora} </span>
 			<span class='teamsro'> <span class='local'>
 					" . $todos -> printFlag($todos -> local) . " {$todos->local} </span> <span class='result'> " . $todos -> printResult() . " </span> <span class='visitante'> {$todos->visitante} 
 					" . $todos -> printFlag($todos -> visitante) . "
 				</span> </span>
-			<span class='pronostico'> ".$pronostico."</span>
+			<span class='pronostico'> " . $pronostico . "</span>
 								
 			<span class='points'> $badge  </span> </div>
 					";
+		}
+		echo "</div>";
 	}
 	?>
 	</form>
 </div>
 
+<script src='/js/registro.js'></script>

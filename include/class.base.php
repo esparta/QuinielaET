@@ -48,7 +48,9 @@ class base {
             $k = strtolower($k);
             if (isset($v->primary_key) && $v->primary_key == 1) // Si la clave es primaria, lo guarda en el objeto
                 $this->_pk = $k;
-                
+            
+			if(!$this->_meta)
+				$this->_meta = new stdClass;
             $this->_meta->$k = $v->type; // Hack para mysql, para que todo lo guarde en minuscula
             
             $this->$k = ''; //Inicializa la propiedad con el valor de la clave a vacio
