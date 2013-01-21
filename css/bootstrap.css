@@ -4922,6 +4922,8 @@ a.badge:hover {
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
+  color: #ffffff;
+  background:url("http://quiniela.efectotequila.com/img/fondo_Balon.jpg") no-repeat scroll 0 0 transparent;
 }
 
 .hero-unit h1 {

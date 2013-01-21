@@ -1,4 +1,6 @@
 <?php 
+@include_once("include/config-local.php");
+
 session_start();
 session_unset();
 $_SESSION = array();

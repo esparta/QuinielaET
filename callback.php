@@ -1,6 +1,5 @@
 <?php
-session_save_path("/home/quinielaet/sessions");
-
+@include_once("include/config-local.php");
 /**
  * @file
  * Take the user when they return from Twitter. Get access tokens.
@@ -9,7 +8,6 @@ session_save_path("/home/quinielaet/sessions");
 
 /* Start session and load lib */
 session_start();
-require_once ('include/config-local.php');
 
 require_once ('include/twitteroauth.php');
 

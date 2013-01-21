@@ -28,22 +28,45 @@ while($results->next()){
 	foreach($as as $r){
 		$next[] = $r["id"];
 	}
-	
+
+$jornadas = $db->GetAll("select grupo from partidos group by grupo order by grupo asc");
 
 ?>
 
 <div class='span12'>
 	<h2> Registra tus marcadores </h2>
 
+    <div class="pagination pagination-large">
+    <ul>
+    <? foreach($jornadas as $jornada) {
+    	if($jornada["grupo"] == $jornadas[count($jornadas)-1]["grupo"]){
+    		$active = "active";
+			$jornada_actual = $jornada["grupo"];
+    	} else {
+    		$active = "";
+    	}
+    ?>	
+	   <li class='pagina <?= $active ?>'><a class='pagina_a' data-id='<?= $jornada["grupo"] ?>' href="#" ><?= $jornada["grupo"] ?></a></li>
+    <? } ?>
+    </ul>
+    </div>
+ 
 			<form action="index_p.php" method="post">
 				<?
 				$grupo = "";
+				$jornada = 0;
 				while ($todos -> next()) {
-
+					
+				 	
 					if ($grupo != $todos -> grupo) {
 						$grupo = $todos -> grupo;
-						$todos -> printGrupo();
-
+						
+						if($jornada > 0){
+							$todos->closeGrupo();
+						}
+						$todos -> printGrupo(null, $jornada_actual);
+						$jornada++;
+						
 					}
 
 					$todos -> printPartido($res, true , $next);

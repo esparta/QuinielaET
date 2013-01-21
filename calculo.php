@@ -1,4 +1,5 @@
 <?php
+@include_once("include/config-local.php");
 
 require_once ("include/class.resultado.php");
 require_once ("include/class.usuario.php");

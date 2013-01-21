@@ -98,3 +98,10 @@
 #rankingtable td.center{
 	text-align:center;
 }
+
+.jornada {
+	display:none;
+}
+.jornada.actual {
+	display:block;
+}

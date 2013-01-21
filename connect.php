@@ -1,9 +1,8 @@
 <?php
-session_save_path("/home/quinielaet/sessions");
+@include_once("include/config-local.php");
 
 /* Start session and load library. */
 session_start();
-require_once('include/config-local.php');
 
 require_once('include/twitteroauth.php');
 

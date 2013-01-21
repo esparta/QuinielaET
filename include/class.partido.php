@@ -9,8 +9,10 @@ class partido extends base {
 			$this -> load();
 	}
 
-	function printGrupo($ro = "") {
+	function printGrupo($ro = "", $jornada_actual = null) {
 
+		$actual = $jornada_actual == $this->grupo ? "actual" : "";
+		echo "<div class='jornada $actual' data-jornada='{$this -> grupo}'>";
 		if (in_array($this -> grupo, array("A", "B", "C", "D"))) {
 
 			echo "<h3 class='grupo_header'> Grupo {$this->grupo} </h3>";
@@ -29,7 +31,9 @@ class partido extends base {
 		<span  class = 'points'>	<strong>  Puntos	</strong> </span>
 		 </div>";
 	}
-
+	function closeGrupo(){
+		echo "</div>";
+	}
 	function printPartido($res, $allow_disabled = true, $siguientes = null) {
 
 		//Res contiene el arrreglo de los resultados del usuario actual
