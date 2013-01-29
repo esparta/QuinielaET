@@ -36,7 +36,7 @@ $jornadas = $db->GetAll("select grupo from partidos group by grupo order by grup
 <div class='span12'>
 	<h2> Registra tus marcadores </h2>
 
-    <div class="pagination pagination-large">
+    <div class="pagination pagination-small">
     <ul>
     <? foreach($jornadas as $jornada) {
     	if($jornada["grupo"] == $jornadas[count($jornadas)-1]["grupo"]){
@@ -46,7 +46,7 @@ $jornadas = $db->GetAll("select grupo from partidos group by grupo order by grup
     		$active = "";
     	}
     ?>	
-	   <li class='pagina <?= $active ?>'><a class='pagina_a' data-id='<?= $jornada["grupo"] ?>' href="#" ><?= $jornada["grupo"] ?></a></li>
+	   <li class='pagina <?= $active ?>'><a class='pagina_a' data-id='<?= $jornada["grupo"] ?>' href="#" ><?= str_ireplace("Jornada", "J", $jornada["grupo"]) ?></a></li>
     <? } ?>
     </ul>
     </div>

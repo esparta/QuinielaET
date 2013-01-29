@@ -27,13 +27,15 @@ foreach ($res as $r) {
 		$count[$r["usuario"]] = array("p0" => 0, "p1" =>0, "p3" => 0);
 	$count[$r["usuario"]]["p" . $r["puntos"]] = $r["num"];
 }
+
+
 ?>
 
-<br /> 
+ 
 
 <h3> Usuarios inscritos: <?= $U -> numrows() ?> </h3>
 
-<br />
+<a href='#Yo' class='btn'>¡Buscame!</a>
 
 <h4> Leyenda </h4>
 
@@ -57,14 +59,17 @@ foreach ($res as $r) {
 $rank = 0;
 $puntos = -1;
  while ($U->next()) {
+ 	$yo = isset($_SESSION["usuario"]) && strtolower($_SESSION["usuario"]) == strtolower($U->usuario) ? "Yo" : ""; 
+ 	
  	if($puntos != $U->puntos)
 		$rank++;
 		$puntos = $U->puntos;
 	?>
 
 
-<tr>
-	<td><?= $rank ?> </td>
+<tr id='<?=$yo?>'>
+
+	<td >	<?= $rank ?> </td>
 	<td><a href='http://twitter.com/<?= $U -> usuario ?>' > <img src='<?=$U -> avatar ?> '  /> <?= $U -> usuario ?> </a></td>
 	<td class='center'><?= (int)$count[$U -> id]["p3"] ?></td>
 	<td class='center'><?= (int)$count[$U -> id]["p1"] ?></td>

@@ -46,7 +46,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/"> <img src="/img/logo.png" /> Tequiniela - Clausura 2013</a>
+          <a class="brand" href="/"><span id='logo'><img src="/img/logo.png" /></span><span id="title">Tequiniela - Clausura 2013</span></a>
 			{HEADER}
         </div>
       </div>

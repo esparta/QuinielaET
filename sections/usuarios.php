@@ -24,26 +24,24 @@ $jornadas = $db -> GetAll("select grupo from partidos group by grupo order by gr
 ?>
 
 <div class='span12'>
-	<br />
 	
 		<a href='/ranking' class="btn btn-primary btn-large">
 		 Regresar 
 	</a> 
-	<br />
 	
 	<h2> Marcadores de @<?= $U -> usuario ?></h2>
 
-    <div class="pagination pagination-large">
+    <div class="pagination pagination-small">
     <ul>
     <? foreach($jornadas as $jornada) {
-    	if($jornada["grupo"] == $jornadas[count($jornadas)-2]["grupo"]){
+    	if($jornada["grupo"] == $jornadas[count($jornadas)-1]["grupo"]){
     		$active = "active";
 			$jornada_actual = $jornada["grupo"];
     	} else {
     		$active = "";
     	}
     ?>	
-	   <li class='pagina <?= $active ?>'><a class='pagina_a' data-id='<?= $jornada["grupo"] ?>' href="#" ><?= $jornada["grupo"] ?></a></li>
+	   <li class='pagina <?= $active ?>'><a class='pagina_a' data-id='<?= $jornada["grupo"] ?>' href="#" ><?= str_ireplace("Jornada", "J", $jornada["grupo"]) ?></a></li>
     <? } ?>
     </ul>
     </div>
