@@ -4,7 +4,7 @@
 }
 .partido_header {
 	margin-bottom: .7em;
-	}
+}
 .fila {
 	margin-bottom: .5em;
 }
@@ -27,7 +27,6 @@
 .teamsro {
 	width: 250px;
 }
-
 
 .teamsro .local {
 	width: 100px;
@@ -57,7 +56,7 @@
 	text-align: right;
 }
 .points {
-	width:30px;
+	width: 30px;
 	margin-left: 2em;
 }
 
@@ -78,85 +77,94 @@
 }
 .label a {
 	color: white;
-	
 }
 @media (max-width: 767px) {
 
- .badge-puntos:before {
-  		content: "Puntos: ";
-  }
- #logo:after {
-  		content: "Tequiniela 2013";
-  		font-size: 80%;
-  		margin-left: 10px;
-    }
-  #title {
-  	display:none;
-  }
+	.badge-puntos:before {
+		content: "Puntos: ";
+	}
+	#logo:after {
+		content: "Tequiniela 2013";
+		font-size: 80%;
+		margin-left: 10px;
+	}
+	#title {
+		display: none;
+	}
 
 }
 @media (max-width: 361px) {
 
- #logo:after {
-  		content: "Tequiniela";
-  		font-size: 80%;
-  		margin-left: 10px;
-  }
-  #title {
-  	display:none;
-  }
-  #rankingtable td:nth-child(5n),th:nth-child(5n) {
-  	display:none;
-  	
-  }
- }
+	#logo:after {
+		content: "Tequiniela";
+		font-size: 80%;
+		margin-left: 10px;
+	}
+	#title {
+		display: none;
+	}
+	#rankingtable td:nth-child(5n), th:nth-child(5n) {
+		display: none;
+	}
+}
 @media (max-width: 320px) {
 
- #logo:after {
-  		content: "Tequiniela";
-  		font-size: 80%;
-	  }
-  #title {
-  	display:none;
-  }
-  #rankingtable td:nth-child(5n),th:nth-child(5n) {
-  	display:none;
-  	
-  }
-  #username{
-  	display:none;
-  }
- }
+	#logo:after {
+		content: "Tequiniela";
+		font-size: 80%;
+	}
+	#title {
+		display: none;
+	}
+	#rankingtable td:nth-child(5n), th:nth-child(5n) {
+		display: none;
+	}
+	.label-info {
+		margin-left: 40px;
+	}
+	.teams .local, .teams .visitante {
+		width: 120px;
+	}
+	#username {
+		display: none;
+	}
+
+	body {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.fila{
+		font-size:90%;
+	}
+}
 .nextmatch {
-	
+
 	background-color: #FFEDC9;
 }
 
-#rankingtable th{
+#rankingtable th {
 	white-space: nowrap;
 }
 
-#rankingtable td.center{
-	text-align:center;
+#rankingtable td.center {
+	text-align: center;
 }
 
 .jornada {
-	display:none;
+	display: none;
 }
 .jornada.actual {
-	display:block;
+	display: block;
 }
 
-.hero-unit{
-	  background:url("http://quiniela.efectotequila.com/img/fondo_Balon.jpg") no-repeat scroll 0 0 transparent;          
-
+.hero-unit {
+	background: url("http://quiniela.efectotequila.com/img/fondo_Balon.jpg") no-repeat scroll 0 0 transparent;
 }
 
-#Yo td{
+#Yo td {
 	background: #DA4F49 !important;
 }
 
 .label-info {
-  background-color: #3A87AD;
-  margin-left: 40px;
+	background-color: #3A87AD;
 }
