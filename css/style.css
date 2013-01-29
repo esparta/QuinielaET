@@ -87,8 +87,9 @@
   }
  #logo:after {
   		content: "Tequiniela 2013";
-  		font-size: 70%;
-  }
+  		font-size: 80%;
+  		margin-left: 10px;
+    }
   #title {
   	display:none;
   }
@@ -98,8 +99,23 @@
 
  #logo:after {
   		content: "Tequiniela";
-  		font-size: 70%;
+  		font-size: 80%;
+  		margin-left: 10px;
   }
+  #title {
+  	display:none;
+  }
+  #rankingtable td:nth-child(5n),th:nth-child(5n) {
+  	display:none;
+  	
+  }
+ }
+@media (max-width: 320px) {
+
+ #logo:after {
+  		content: "";
+  		font-size: 60%;
+	  }
   #title {
   	display:none;
   }
