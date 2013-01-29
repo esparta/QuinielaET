@@ -1,7 +1,7 @@
 <div class="btn-group pull-right">
 	<? if(isset($_SESSION["usuario"])) {
 	?>
-	<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> <i> <img src="<?= $_USER -> avatar ?>" /> </i> <?= $_SESSION["usuario"] ?>
+	<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> <i><img src="<?= $_USER -> avatar ?>" /></i> <span id='username'><?= $_SESSION["usuario"] ?></span>
 	<span class="caret"></span> </a>
 	<ul class="dropdown-menu">
 		<li>

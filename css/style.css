@@ -113,8 +113,8 @@
 @media (max-width: 320px) {
 
  #logo:after {
-  		content: "";
-  		font-size: 60%;
+  		content: "Tequiniela";
+  		font-size: 80%;
 	  }
   #title {
   	display:none;
@@ -122,6 +122,9 @@
   #rankingtable td:nth-child(5n),th:nth-child(5n) {
   	display:none;
   	
+  }
+  #username{
+  	display:none;
   }
  }
 .nextmatch {
