@@ -35,8 +35,17 @@ foreach ($res as $r) {
 
 <h3> Usuarios inscritos: <?= $U -> numrows() ?> </h3>
 
-<a href='#Yo' class='btn'>¡Buscame!</a>
 
+
+
+<a href='#' id='buscame' class='btn btn-success'>¡Buscame!</a>
+<script>
+	$("#buscame").click(function() {
+     $('html, body').animate({
+         scrollTop: $("#Yo").offset().top - 50
+     }, 2000);
+ });
+</script>
 <h4> Leyenda </h4>
 
 <span class=" badge badge-success">3</span> : Partidos atinados a marcador <br />
